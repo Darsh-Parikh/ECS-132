@@ -1,2 +1,2 @@
-# ECS 132
-The UC Davis Probability and Statistical Modelling for CS course.
+# ECS 132 (Probability and Statistical Modelling)
+Fall 2022 with V. Bhaskar at UC Davis
