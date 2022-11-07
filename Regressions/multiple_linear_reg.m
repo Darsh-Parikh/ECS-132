@@ -1,0 +1,9 @@
+% Matlab File for estimating Y = B_1*X_1 + B_2*X_2
+Y = [0 4 7]';
+x1 = [1 2 4]';
+x2 = [1 1 1]';
+% In general B = inv(X' * X) * X' * Y
+X = [x1 x2];
+X_t = X';
+X_t_i = inv(X_t * X);
+Beta = X_t_i * X_t * Y
