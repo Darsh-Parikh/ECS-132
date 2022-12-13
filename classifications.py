@@ -1,8 +1,9 @@
 import matplotlib.pyplot as plt
 import math
 
-custom_x = [[0.5, 1.6, 2.2], [0.7, 2.8, 3.2, 2.2], [8.2, 10.9, 13.5]]
-custom_y = [[1.0, 3.7, 4.1], [9.5, 8.6, 13.6, 9.9], [12.6, 4.4, 9.2]]
+custom_x = [[0.7, 2.8, 3.2, 2.2, 1.3, 0.7], [8.2, 10.9, 13.5, 9.9, 12.3, 6]]
+custom_y = [[9.5, 8.6, 13.6, 9.9, 12.3, 8.54], [12.6, 4.4, 9.2, 10.43, 15.9, 3.8]]
+
 X_MAX = 14 ; Y_MAX = 14
 plt.ylim([0, Y_MAX])
 
@@ -42,7 +43,10 @@ class Line:
         self.b = (p2_x**2 - p1_x**2 + p2_y**2 - p1_y**2) / (2 * (p2_y - p1_y))
         self.m = (p1_y + p2_y - 2*self.b) / (p1_x + p2_x)
 
-    def generate_line(self, other_set : Set):
+    def generate_line(self, other_set = None):
+        if (other_set != None):
+            ...
+        
         self.x = [0, X_MAX]     # ! find a better method
         self.y = list(map(lambda a: (self.m * a + self.b), self.x))
 
@@ -50,19 +54,11 @@ class Line:
 
 set1 = Set(); set1.generate_custom(1)
 set2 = Set(); set2.generate_custom(2)
-set3 = Set(); set3.generate_custom(3)
 line1 = Line() ; line1.classify(set1, set2)
-line2 = Line() ; line2.classify(set2, set3)
-line3 = Line() ; line3.classify(set1, set3)
-line1.generate_line(set3)
-line2.generate_line(set1)
-line3.generate_line(set2)
+line1.generate_line()
 plt.scatter(set1.x, set1.y, color='red')
 plt.scatter(set2.x, set2.y, color='blue')
-plt.scatter(set3.x, set3.y, color='orange')
-plt.plot(line1.x, line1.y)
-plt.plot(line2.x, line2.y)
-plt.plot(line3.x, line3.y)
+plt.plot(line1.x, line1.y, color="black")
 plt.xlabel("X")
 plt.ylabel("Y")
 plt.show()
